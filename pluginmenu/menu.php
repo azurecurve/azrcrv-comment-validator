@@ -31,7 +31,7 @@ if (!function_exists('azrcrv_add_plugin_menu')){
 	}
 }
 
-if (!function_exists('azrcrv_plugin_menu_load_css')){
+if (!function_exists('azrcrv_plugin_menu_load_css')){ 
 	function azrcrv_plugin_menu_load_css(){
 		wp_enqueue_style('azrcrv-plugin-index', plugins_url('css/style.css', __FILE__));
 	}
