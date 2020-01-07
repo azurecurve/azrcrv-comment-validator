@@ -26,6 +26,9 @@ To install the Comment Validator plugin:
 
 == Changelog ==
 Changes and feature additions for the Comment Validator plugin:
+= 1.0.1 =
+* Update azurecurve menu for easier maintenance.
+* Move require of azurecurve menu below security check.
 = 1.0.0 =
 * First version for ClassicPress forked from azurecurve Comment Validator WordPress Plugin.
 * Add option to prevent unregistered user using registered username.
