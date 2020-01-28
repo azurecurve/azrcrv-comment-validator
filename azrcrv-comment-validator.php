@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Comment Validator
  * Description: Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/comment-validator
@@ -24,6 +24,10 @@ if (!defined('ABSPATH')){
 
 // include plugin menu
 require_once(dirname( __FILE__).'/pluginmenu/menu.php');
+register_activation_hook(__FILE__, 'azrcrv_create_plugin_menu_cv');
+
+// include update client
+require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php');
 
 /**
  * Setup actions, filters and shortcodes.
@@ -36,6 +40,7 @@ add_action('admin_menu', 'azrcrv_cv_create_admin_menu');
 add_action('admin_post_azrcrv_cv_save_options', 'azrcrv_cv_save_options');
 add_action('network_admin_menu', 'azrcrv_cv_create_network_admin_menu');
 add_action('network_admin_edit_azrcrv_cv_save_network_options', 'azrcrv_cv_save_network_options');
+add_action('plugins_loaded', 'azrcrv_cv_load_languages');
 
 // add filters
 add_filter('plugin_action_links', 'azrcrv_cv_add_plugin_action_link', 10, 2);
@@ -43,6 +48,17 @@ add_filter('preprocess_comment' , 'azrcrv_cv_validate_comment', 20);
 
 // register activation hook
 register_activation_hook(__FILE__, 'azrcrv_cv_set_default_options');
+
+/**
+ * Load language files.
+ *
+ * @since 1.0.0
+ *
+ */
+function azrcrv_cv_load_languages() {
+    $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
+    load_plugin_textdomain('azrcrv-cv', false, $plugin_rel_path);
+}
 
 /**
  * Set default options for plugin.
@@ -165,7 +181,7 @@ function azrcrv_cv_display_options(){
 	?>
 	<div id="azrcrv-cv-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
@@ -315,7 +331,7 @@ function azrcrv_cv_network_settings(){
 	?>
 	<div id="azrcrv-cv-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			<form method="post" action="admin-post.php">
 				<input type="hidden" name="action" value="azrcrv_cv_save_network_options" />
 				<input name="page_options" type="hidden" value="smallest, largest, number" />
