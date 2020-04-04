@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Comment Validator
  * Description: Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/
@@ -68,6 +68,8 @@ function azrcrv_cv_load_languages() {
  */
 function azrcrv_cv_set_default_options($networkwide){
 	
+	$option_name = 'azrcrv-cv';
+	
 	$new_options = array(
 				'min_length' => 10,
 				'max_length' => 500,
@@ -87,44 +89,65 @@ function azrcrv_cv_set_default_options($networkwide){
 
 			foreach ($blog_ids as $blog_id){
 				switch_to_blog($blog_id);
-
-				if (get_option('azrcrv-cv') === false){
-					if (get_option('azc_cv_options') === false){
-						add_option('azrcrv-cv', $new_options);
-					}else{
-						add_option('azrcrv-cv', get_option('azc_cv_options'));
-					}
-				}
+				
+				azrcrv_cv_update_options($option_name, $new_options, false);
 			}
 
 			switch_to_blog($original_blog_id);
 		}else{
-			if (get_option('azrcrv-cv') === false){
-				if (get_option('azc_cv_options') === false){
-					add_option('azrcrv-cv', $new_options);
-				}else{
-					add_option('azrcrv-cv', get_option('azc_cv_options'));
-				}
-			}
+			azrcrv_cv_update_options( $option_name, $new_options, false);
 		}
-		if (get_site_option('azrcrv-cv') === false){
-				if (get_option('azc_cv_options') === false){
-					add_option('azrcrv-cv', $new_options);
-				}else{
-					add_option('azrcrv-cv', get_option('azc_cv_options'));
-				}
+		if (get_site_option($option_name) === false){
+			azrcrv_cv_update_options($option_name, $new_options, true);
 		}
 	}
 	//set defaults for single site
 	else{
-		if (get_option('azrcrv-cv') === false){
-				if (get_option('azc_cv_options') === false){
-					add_option('azrcrv-cv', $new_options);
-				}else{
-					add_option('azrcrv-cv', get_option('azc_cv_options'));
-				}
+		azrcrv_cv_update_options($option_name, $new_options, false);
+	}
+}
+
+/**
+ * Update options.
+ *
+ * @since 1.1.3
+ *
+ */
+function azrcrv_cv_update_options($option_name, $new_options, $is_network_site){
+	if ($is_network_site == true){
+		if (get_site_option($option_name) === false){
+			add_site_option($option_name, $new_options);
+		}else{
+			update_site_option($option_name, azrcrv_cv_update_default_options($new_options, get_site_option($option_name)));
+		}
+	}else{
+		if (get_option($option_name) === false){
+			add_option($option_name, $new_options);
+		}else{
+			update_option($option_name, azrcrv_cv_update_default_options($new_options, get_option($option_name)));
 		}
 	}
+}
+
+
+/**
+ * Add default options to existing options.
+ *
+ * @since 1.1.3
+ *
+ */
+function azrcrv_cv_update_default_options( &$default_options, $current_options ) {
+    $default_options = (array) $default_options;
+    $current_options = (array) $current_options;
+    $updated_options = $current_options;
+    foreach ($default_options as $key => &$value) {
+        if (is_array( $value) && isset( $updated_options[$key ])){
+            $updated_options[$key] = azrcrv_cv_update_default_options($value, $updated_options[$key], true);
+        } else {
+            $updated_options[$key] = $value;
+        }
+    }
+    return $updated_options;
 }
 
 /**

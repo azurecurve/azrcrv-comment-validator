@@ -1,12 +1,12 @@
 === Comment Validator ===
 
 Description:	Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
-Version:		1.1.2
+Version:		1.1.3
 Tags:			comments
 Author:			azurecurve
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/
-Download link:	https://github.com/azurecurve/azrcrv-comment-validator/releases/download/v1.1.2/azrcrv-comment-validator.zip
+Download link:	https://github.com/azurecurve/azrcrv-comment-validator/releases/download/v1.1.3/azrcrv-comment-validator.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -49,6 +49,10 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
 
+### [Version 1.1.3](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v1.1.3)
+ * Rewrite default option creation function to resolve several bugs.
+ * Upgrade azurecurve plugin to store available plugins in options.
+ 
 ### [Version 1.1.2](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v1.1.2)
  * Update Update Manager class to v2.0.0.
  * Update action link.
