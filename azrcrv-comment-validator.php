@@ -24,7 +24,7 @@ if (!defined('ABSPATH')){
 
 // include plugin menu
 require_once(dirname( __FILE__).'/pluginmenu/menu.php');
-register_activation_hook(__FILE__, 'azrcrv_create_plugin_menu_cv');
+add_action('admin_init', 'azrcrv_create_plugin_menu_cv');
 
 // include update client
 require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php');
@@ -36,6 +36,7 @@ require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php')
  *
  */
 // add actions
+add_action('admin_init', 'azrcrv_cv_set_default_options');
 add_action('admin_menu', 'azrcrv_cv_create_admin_menu');
 add_action('admin_post_azrcrv_cv_save_options', 'azrcrv_cv_save_options');
 add_action('network_admin_menu', 'azrcrv_cv_create_network_admin_menu');
@@ -45,9 +46,6 @@ add_action('plugins_loaded', 'azrcrv_cv_load_languages');
 // add filters
 add_filter('plugin_action_links', 'azrcrv_cv_add_plugin_action_link', 10, 2);
 add_filter('preprocess_comment' , 'azrcrv_cv_validate_comment', 20);
-
-// register activation hook
-register_activation_hook(__FILE__, 'azrcrv_cv_set_default_options');
 
 /**
  * Load language files.
@@ -71,11 +69,12 @@ function azrcrv_cv_set_default_options($networkwide){
 	$option_name = 'azrcrv-cv';
 	
 	$new_options = array(
-				'min_length' => 10,
-				'max_length' => 500,
-				'mod_length' => 250,
-				'prevent_unreg_using_reg_name' => 1,
-				'use_network' => 1
+						'min_length' => 10,
+						'max_length' => 500,
+						'mod_length' => 250,
+						'prevent_unreg_using_reg_name' => 1,
+						'use_network' => 1,
+						'updated' => strtotime('2020-04-04'),
 			);
 	
 	// set defaults for multi-site
@@ -118,13 +117,21 @@ function azrcrv_cv_update_options($option_name, $new_options, $is_network_site){
 		if (get_site_option($option_name) === false){
 			add_site_option($option_name, $new_options);
 		}else{
-			update_site_option($option_name, azrcrv_cv_update_default_options($new_options, get_site_option($option_name)));
+			$options = get_site_option($option_name);
+			if (!isset($options['updated']) OR $options['updated'] < $new_options['updated'] ){
+				$options['updated'] = $new_options['updated'];
+				update_site_option($option_name, azrcrv_cv_update_default_options($options, $new_options));
+			}
 		}
 	}else{
 		if (get_option($option_name) === false){
 			add_option($option_name, $new_options);
 		}else{
-			update_option($option_name, azrcrv_cv_update_default_options($new_options, get_option($option_name)));
+			$options = get_option($option_name);
+			if (!isset($options['updated']) OR $options['updated'] < $new_options['updated'] ){
+				$options['updated'] = $new_options['updated'];
+				update_option($option_name, azrcrv_cv_update_default_options($options, $new_options));
+			}
 		}
 	}
 }
@@ -141,10 +148,10 @@ function azrcrv_cv_update_default_options( &$default_options, $current_options )
     $current_options = (array) $current_options;
     $updated_options = $current_options;
     foreach ($default_options as $key => &$value) {
-        if (is_array( $value) && isset( $updated_options[$key ])){
-            $updated_options[$key] = azrcrv_cv_update_default_options($value, $updated_options[$key], true);
+        if (is_array( $value) && isset( $updated_options[$key])){
+            $updated_options[$key] = azrcrv_cv_update_default_options($value, $updated_options[$key]);
         } else {
-            $updated_options[$key] = $value;
+			$updated_options[$key] = $value;
         }
     }
     return $updated_options;
