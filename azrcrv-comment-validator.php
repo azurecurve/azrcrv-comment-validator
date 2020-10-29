@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Comment Validator
  * Description: Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/
@@ -66,7 +66,7 @@ function azrcrv_cv_load_languages() {
  *
  */
 function azrcrv_cv_custom_image_path($path){
-    if (strpos($path, 'azrcrv-add-twitter-card') !== false){
+    if (strpos($path, 'azrcrv-comment-validator') !== false){
         $path = plugin_dir_path(__FILE__).'assets/pluginimages';
     }
     return $path;
@@ -79,7 +79,7 @@ function azrcrv_cv_custom_image_path($path){
  *
  */
 function azrcrv_cv_custom_image_url($url){
-    if (strpos($url, 'azrcrv-add-twitter-card') !== false){
+    if (strpos($url, 'azrcrv-comment-validator') !== false){
         $url = plugin_dir_url(__FILE__).'assets/pluginimages';
     }
     return $url;
