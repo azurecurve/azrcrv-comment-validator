@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Comment Validator
  * Description: Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version: 1.2.1
+ * Version: 1.3.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/
@@ -123,7 +123,7 @@ function azrcrv_cv_add_plugin_action_link($links, $file){
 	}
 
 	if ($file == $this_plugin){
-		$settings_link = '<a href="'.admin_url('admin.php?page=azrcrv-cv').'"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'comment-validator').'</a>';
+		$settings_link = '<a href="'.admin_url('admin.php?page=azrcrv-cv').'"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'comment-validator').'</a>';
 		array_unshift($links, $settings_link);
 	}
 
@@ -163,7 +163,12 @@ function azrcrv_cv_display_options(){
 	?>
 	<div id="azrcrv-cv-general" class="wrap">
 		<fieldset>
-			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+			<h1>
+				<?php
+					echo '<a href="https://development.azurecurve.co.uk/classicpress-plugins/"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-right: 6px; height: 20px; width: 20px;" alt="azurecurve" /></a>';
+					esc_html_e(get_admin_page_title());
+				?>
+			</h1>
 			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
@@ -313,7 +318,12 @@ function azrcrv_cv_network_settings(){
 	?>
 	<div id="azrcrv-cv-general" class="wrap">
 		<fieldset>
-			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+			<h1>
+				<?php
+					echo '<a href="https://development.azurecurve.co.uk/classicpress-plugins/"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-right: 6px; height: 20px; width: 20px;" alt="azurecurve" /></a>';
+					esc_html_e(get_admin_page_title());
+				?>
+			</h1>
 			<form method="post" action="admin-post.php">
 				<input type="hidden" name="action" value="azrcrv_cv_save_network_options" />
 				<input name="page_options" type="hidden" value="smallest, largest, number" />
@@ -413,7 +423,7 @@ function azrcrv_cv_validate_comment($commentdata){
 			$is_used = $wpdb->get_var($wpdb->prepare($sql, $commentdata['comment_author'], $commentdata['comment_author'], $commentdata['comment_author']));
 			
 			if ($is_used > 0){
-				$error = new WP_Error('not_found', '<p><p>'.__('This name is reserved.' , 'comment-validator').'</p></p><p><a href="javascript:history.back()">&laquo; '.__('Back', 'comment-validator').'</a></p>', array('response' => '200'));
+				$error = new WP_Error('not_found', '<p><p>'.esc_html__('This name is reserved.' , 'comment-validator').'</p></p><p><a href="javascript:history.back()">&laquo; '.esc_html__('Back', 'comment-validator').'</a></p>', array('response' => '200'));
 				if(is_wp_error($error)){
 					wp_die($error, '', $error->get_error_data());
 				}
@@ -422,12 +432,12 @@ function azrcrv_cv_validate_comment($commentdata){
 	}
 	
 	if (strlen($commentdata['comment_content']) < $options['min_length']){
-		$error = new WP_Error('not_found', __('This comment is shorter than the minimum allowed size.' , 'comment-validator'), array('response' => '200'));
+		$error = new WP_Error('not_found', esc_html__('This comment is shorter than the minimum allowed size.' , 'comment-validator'), array('response' => '200'));
 		if(is_wp_error($error)){
 			wp_die($error, '', $error->get_error_data());
 		}
 	}elseif (strlen($commentdata['comment_content']) > $options['max_length'] && $options['max_length'] > 0){
-		$error = new WP_Error('not_found', __('This comment is longer than the maximum allowed size.', 'comment-validator'), array('response' => '200'));
+		$error = new WP_Error('not_found', esc_html__('This comment is longer than the maximum allowed size.', 'comment-validator'), array('response' => '200'));
 		if(is_wp_error($error)){
 			wp_die($error, '', $error->get_error_data());
 		}
