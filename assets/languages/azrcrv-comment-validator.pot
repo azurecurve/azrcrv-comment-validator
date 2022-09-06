@@ -1,0 +1,203 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Comment Validator\n"
+"POT-Creation-Date: 2022-09-05 18:33+0100\n"
+"PO-Revision-Date: 2019-02-24 18:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: translate@azurecurve.co.uk\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/azurecurve-menu-display.php:51
+msgid "Active Plugins"
+msgstr ""
+
+#: includes/azurecurve-menu-display.php:83 includes/tab-other-plugins.php:41
+#, php-format
+msgid "%1$s was one of the first plugin developers to start developing for ClassicPress; all plugins are available from %2$s and are integrated with the %3$s plugin for fully integrated, no hassle, updates."
+msgstr ""
+
+#: includes/azurecurve-menu-display.php:86
+#, php-format
+msgid "The %s plugins active on your site are:"
+msgstr ""
+
+#: includes/azurecurve-menu-display.php:105
+msgid "Other Available Plugins"
+msgstr ""
+
+#: includes/azurecurve-menu-display.php:131
+#, php-format
+msgid "Congratulations! You're using all of the %s plugins."
+msgstr ""
+
+#: includes/azurecurve-menu-display.php:143
+#, php-format
+msgid "The other plugins available from %s are:"
+msgstr ""
+
+#: includes/azurecurve-menu-tabs-output.php:50
+msgid "Support"
+msgstr ""
+
+#: includes/azurecurve-menu-tabs-output.php:61
+#: includes/tabs-network-output.php:104 includes/tabs-output.php:104
+msgid "You can help support the development of our free plugins by donating a small amount of money."
+msgstr ""
+
+#: includes/functions-menu.php:19 includes/functions-menu.php:33
+#: includes/functions-menu.php:48 includes/tab-network-settings.php:15
+#: includes/tab-settings.php:15
+msgid "Settings"
+msgstr ""
+
+#: includes/functions-network-settings.php:37
+#: includes/functions-settings.php:37
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/functions-network-settings.php:53
+#: includes/functions-settings.php:53
+msgid "Settings have been saved."
+msgstr ""
+
+#: includes/functions-network-settings.php:73
+#: includes/functions-settings.php:73
+msgid "You do not have permissions to perform this action"
+msgstr ""
+
+#: includes/plugin-functionality.php:37
+msgid "This name is reserved."
+msgstr ""
+
+#: includes/plugin-functionality.php:37
+msgid "Back"
+msgstr ""
+
+#: includes/plugin-functionality.php:51
+msgid "This comment is shorter than the minimum allowed size."
+msgstr ""
+
+#: includes/plugin-functionality.php:62
+msgid "This comment is longer than the maximum allowed size."
+msgstr ""
+
+#: includes/tab-instructions.php:14
+msgid "Instructions"
+msgstr ""
+
+#: includes/tab-instructions.php:22 includes/tab-network-settings.php:37
+#: includes/tab-settings.php:79
+msgid "Protect Usernames"
+msgstr ""
+
+#: includes/tab-instructions.php:37 includes/tab-settings.php:40
+msgid "Network Settings"
+msgstr ""
+
+#: includes/tab-instructions.php:49
+msgid "Mark this box to use network defined settings for comment validation instead of the local site settings; if this option is marked, the other local settings are ignored."
+msgstr ""
+
+#: includes/tab-instructions.php:64
+msgid "Standard functionality allows users to use a registered when submitting their comment; this setting allows you to prevent this."
+msgstr ""
+
+#: includes/tab-instructions.php:76 includes/tab-network-settings.php:73
+#: includes/tab-settings.php:115
+msgid "Comment Length Settings"
+msgstr ""
+
+#: includes/tab-instructions.php:88
+msgid "Settings can be configured for minimum and maximum comment lengths which are permitted; you can also specify a comment length over which a comment must be moderated."
+msgstr ""
+
+#: includes/tab-network-settings.php:24 includes/tab-settings.php:24
+msgid "Comment Validator ensures comments meet certain requirements before they can be submitted."
+msgstr ""
+
+#: includes/tab-network-settings.php:47 includes/tab-settings.php:89
+msgid "Protect Registered Usernames?"
+msgstr ""
+
+#: includes/tab-network-settings.php:56 includes/tab-settings.php:98
+msgid "Prevent unregistered users using name of registered user?"
+msgstr ""
+
+#: includes/tab-network-settings.php:61 includes/tab-settings.php:103
+msgid "Prevents unregistered user using name of registered user"
+msgstr ""
+
+#: includes/tab-network-settings.php:85 includes/tab-settings.php:127
+msgid "Minimum Length"
+msgstr ""
+
+#: includes/tab-network-settings.php:94 includes/tab-settings.php:136
+msgid "Minimum comment length; set to 0 for no minimum."
+msgstr ""
+
+#: includes/tab-network-settings.php:106 includes/tab-settings.php:148
+msgid "Maximum Length"
+msgstr ""
+
+#: includes/tab-network-settings.php:115 includes/tab-settings.php:157
+msgid "Minimum comment length; set to 0 for no maximum."
+msgstr ""
+
+#: includes/tab-network-settings.php:127 includes/tab-settings.php:169
+msgid "Moderation Length"
+msgstr ""
+
+#: includes/tab-network-settings.php:136 includes/tab-settings.php:178
+msgid "Moderation comment length; set to 0 for no moderation."
+msgstr ""
+
+#: includes/tab-other-plugins.php:32
+msgid "Other Plugins"
+msgstr ""
+
+#: includes/tab-other-plugins.php:44
+#, php-format
+msgid "Other plugins available from %s, which you are not using, are:"
+msgstr ""
+
+#: includes/tab-settings.php:50 includes/tab-settings.php:59
+msgid "Use network settings?"
+msgstr ""
+
+#: includes/tab-settings.php:64
+msgid "If marked, the settings below will be ignored in preference of network settings"
+msgstr ""
+
+#: includes/tabs-network-output.php:85 includes/tabs-output.php:85
+msgid "Save Settings"
+msgstr ""
+
+#: includes/tabs-network-output.php:94 includes/tabs-output.php:94
+#, php-format
+msgid "Support %s"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:185
+msgid "Compatible up to:"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:185
+msgid "Reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:185
+msgid "Read all reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:381
+msgid "View details"
+msgstr ""
