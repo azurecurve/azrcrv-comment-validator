@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Comment Validator
  * Description: Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/comment-validator/
