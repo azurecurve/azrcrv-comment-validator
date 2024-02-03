@@ -18,6 +18,10 @@ function get_option_with_defaults( $option_name ) {
 		'max_length'                   => 500,
 		'mod_length'                   => 250,
 		'prevent_unreg_using_reg_name' => 1,
+		'honeypot_enabled'             => 0,
+		'honeypot_name'                => 'honeypot',
+		'time_delay_enabled'           => 0,
+		'time_delay_seconds'           => 5,
 		'use_network'                  => 1,
 	);
 
@@ -96,6 +100,30 @@ function save_options() {
 		}
 
 		$option_name = 'mod_length';
+		if ( isset( $_POST[ $option_name ] ) ) {
+			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
+		}
+		
+		$option_name = 'honeypot_enabled';
+		if ( isset( $_POST[ $option_name ] ) ) {
+			$options[ $option_name ] = 1;
+		} else {
+			$options[ $option_name ] = 0;
+		}
+
+		$option_name = 'honeypot_name';
+		if ( isset( $_POST[ $option_name ] ) ) {
+			$options[ $option_name ] = sanitize_text_field( $_POST[ $option_name ] );
+		}
+		
+		$option_name = 'time_delay_enabled';
+		if ( isset( $_POST[ $option_name ] ) ) {
+			$options[ $option_name ] = 1;
+		} else {
+			$options[ $option_name ] = 0;
+		}
+
+		$option_name = 'time_delay_seconds';
 		if ( isset( $_POST[ $option_name ] ) ) {
 			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
 		}

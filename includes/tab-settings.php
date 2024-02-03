@@ -112,7 +112,7 @@ $tab_settings .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Comment Length Settings', 'azrcrv-cv' ) . '</h2>
+				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Comment Length', 'azrcrv-cv' ) . '</h2>
 			
 		</th>
 
@@ -179,6 +179,125 @@ $tab_settings .= '
 			
 		</td>
 		
+	</tr>';
+
+$tab_settings .= '
+
+	<tr>
+	
+		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
+			
+				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Honeypot', 'azrcrv-cv' ) . '</h2>
+			
+		</th>
+
 	</tr>
+	
+	<tr>
+	
+		<th scope="row">
+		
+			' . esc_html__( 'Enable honeypot?', 'azrcrv-cv' ) . '
+			
+		</th>
+		
+		<td>
+			
+			<input name="honeypot_enabled" type="checkbox" id="honeypot_enabled" value="1" ' . checked( '1', $options['honeypot_enabled'], false ) . ' />
+			
+			<label for="honeypot_enabled">
+				' . esc_html__( 'Enable honeypot?', 'azrcrv-cv' ) . '
+			</label>
+			
+			<p>
+				<span class="description">
+					' . esc_html__( 'Adds honeypot field to comment form.', 'azrcrv-cv' ) . '
+				</span>
+			</p>
+			
+		</td>
+		
+	</tr>
+
+	<tr>
+	
+		<th scope="row">
+		
+			<label for="honeypot_name">
+			
+				' . esc_html__( 'Honeypot Field Name', 'azrcrv-cv' ) . '
+				
+			</label>
+			
+		</th>
+		
+		<td>
+		
+			<input name="honeypot_name" type="text" id="honeypot_name" value="' . esc_attr( $options['honeypot_name'] ) . '" class="regular-text" />
+			<p class="description">' . esc_html__( 'Set the name of the honeypot  which will be used for the field added to the comment form.', 'azrcrv-cv' ) . '</p>
+			
+		</td>
+		
+	</tr>';
+
+$tab_settings .= '
+
+	<tr>
+	
+		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
+			
+				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Time Delay', 'azrcrv-cv' ) . '</h2>
+			
+		</th>
+
+	</tr>
+	
+	<tr>
+	
+		<th scope="row">
+		
+			' . esc_html__( 'Enable time delay?', 'azrcrv-cv' ) . '
+			
+		</th>
+		
+		<td>
+			
+			<input name="time_delay_enabled" type="checkbox" id="time_delay_enabled" value="1" ' . checked( '1', $options['time_delay_enabled'], false ) . ' />
+			
+			<label for="time_delay_enabled">
+				' . esc_html__( 'Enable time delay?', 'azrcrv-cv' ) . '
+			</label>
+			
+			<p>
+				<span class="description">
+					' . esc_html__( 'Enforces a delay between the time a page loads and a comment can be submitted.', 'azrcrv-cv' ) . '
+				</span>
+			</p>
+			
+		</td>
+		
+	</tr>
+
+	<tr>
+	
+		<th scope="row">
+		
+			<label for="time_delay_seconds">
+			
+				' . esc_html__( 'Time Delay in Seconds', 'azrcrv-cv' ) . '
+				
+			</label>
+			
+		</th>
+		
+		<td>
+		
+			<input name="time_delay_seconds" type="number" step=1 start=1 minimum=1 id="time_delay_seconds" value="' . esc_attr( $options['time_delay_seconds'] ) . '" class="small-text" />
+			<p class="description">' . esc_html__( 'Set the number of seconds before a comment can be submitted.', 'azrcrv-cv' ) . '</p>
+			
+		</td>
+		
+	</tr>
+
 
 </table>';
