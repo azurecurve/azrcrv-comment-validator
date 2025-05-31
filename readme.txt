@@ -34,6 +34,9 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
  
+### [Version 2.1.1](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v2.1.1)
+ * Update plugin header for compatibility with ClasssicPress v2.
+ 
 ### [Version 2.1.0](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v2.1.0)
  * Fix bug with error handling.
  * Add option for honeypot on comment form.
