@@ -1,6 +1,6 @@
 <?php
 /*
-	tab output on settings page
+	Settings functions - Comment Validator (Enhanced)
 */
 
 /**
@@ -22,15 +22,14 @@ function get_option_with_defaults( $option_name ) {
 		'honeypot_name'                => 'honeypot',
 		'time_delay_enabled'           => 0,
 		'time_delay_seconds'           => 5,
+		'rate_limit_per_minute'        => 5,
 		'use_network'                  => 1,
 	);
 
 	$options = get_option( $option_name, $defaults );
-
 	$options = wp_parse_args( $options, $defaults );
 
 	return $options;
-
 }
 
 /**
@@ -41,7 +40,6 @@ function display_options() {
 		wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'azrcrv-cv' ) );
 	}
 
-	// Retrieve plugin configuration options from database.
 	$options = get_option_with_defaults( PLUGIN_HYPHEN );
 
 	echo '<div id="' . esc_attr( PLUGIN_HYPHEN ) . '-general" class="wrap">';
@@ -72,78 +70,93 @@ function display_options() {
  * Save settings.
  */
 function save_options() {
-	// Check that user has proper security level.
 	if ( ! current_user_can( 'manage_options' ) ) {
 		wp_die( esc_html__( 'You do not have permissions to perform this action', 'azrcrv-cv' ) );
 	}
-	// Check that nonce field created in configuration form is present.
 	if ( ! empty( $_POST ) && check_admin_referer( PLUGIN_HYPHEN, PLUGIN_HYPHEN . '-nonce' ) ) {
 
-		// Retrieve original plugin options array.
 		$options = get_option_with_defaults( PLUGIN_HYPHEN );
 
 		$option_name = 'prevent_unreg_using_reg_name';
-		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = 1;
-		} else {
-			$options[ $option_name ] = 0;
-		}
+		$options[ $option_name ] = isset( $_POST[ $option_name ] ) ? 1 : 0;
 
 		$option_name = 'min_length';
 		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
+			$options[ $option_name ] = abs( intval( $_POST[ $option_name ] ) );
 		}
 
 		$option_name = 'max_length';
 		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
+			$options[ $option_name ] = abs( intval( $_POST[ $option_name ] ) );
 		}
 
 		$option_name = 'mod_length';
 		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
+			$options[ $option_name ] = abs( intval( $_POST[ $option_name ] ) );
 		}
-		
+
 		$option_name = 'honeypot_enabled';
-		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = 1;
-		} else {
-			$options[ $option_name ] = 0;
-		}
+		$options[ $option_name ] = isset( $_POST[ $option_name ] ) ? 1 : 0;
 
 		$option_name = 'honeypot_name';
 		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = sanitize_text_field( $_POST[ $option_name ] );
+			$options[ $option_name ] = sanitize_key( $_POST[ $option_name ] );
 		}
-		
+
 		$option_name = 'time_delay_enabled';
-		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = 1;
-		} else {
-			$options[ $option_name ] = 0;
-		}
+		$options[ $option_name ] = isset( $_POST[ $option_name ] ) ? 1 : 0;
 
 		$option_name = 'time_delay_seconds';
 		if ( isset( $_POST[ $option_name ] ) ) {
-			$options[ $option_name ] = sanitize_text_field( intval( $_POST[ $option_name ] ) );
+			$options[ $option_name ] = max( 1, intval( $_POST[ $option_name ] ) );
+		}
+
+		$option_name = 'rate_limit_per_minute';
+		if ( isset( $_POST[ $option_name ] ) ) {
+			$options[ $option_name ] = max( 1, intval( $_POST[ $option_name ] ) );
 		}
 
 		$option_name = 'use_network';
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-			if ( isset( $_POST[ $option_name ] ) ) {
-				$options[ $option_name ] = 1;
-			} else {
-				$options[ $option_name ] = 0;
-			}
+			$options[ $option_name ] = isset( $_POST[ $option_name ] ) ? 1 : 0;
 		} else {
 			$options[ $option_name ] = 0;
 		}
 
-		// Store updated options array to database.
 		update_option( PLUGIN_HYPHEN, $options );
 
-		// Redirect the page to the configuration form that was processed.
+		// Save scoring weights
+		$allowed_weights = [
+			'honeypot', 'rate_limit', 'too_fast', 'missing_token',
+			'links', 'keywords', 'no_js', 'interaction', 'no_agent',
+			'all_caps', 'repeated_chars', 'duplicate', 'spam_email', 'ip_rep',
+		];
+		$weights = [];
+		foreach ( $allowed_weights as $key ) {
+			if ( isset( $_POST['cvp_weights'][ $key ] ) ) {
+				$weights[ $key ] = max( 0, intval( $_POST['cvp_weights'][ $key ] ) );
+			}
+		}
+		update_option( 'azrcrv-cv-weights', $weights );
+
+		// Save scoring thresholds
+		$thresholds = [];
+		foreach ( [ 'block', 'moderate' ] as $key ) {
+			if ( isset( $_POST['cvp_thresholds'][ $key ] ) ) {
+				$thresholds[ $key ] = max( 0, intval( $_POST['cvp_thresholds'][ $key ] ) );
+			}
+		}
+		update_option( 'azrcrv-cv-thresholds', $thresholds );
+
 		wp_safe_redirect( add_query_arg( 'page', PLUGIN_HYPHEN . '&settings-updated', admin_url( 'admin.php' ) ) );
 		exit;
 	}
+}
+
+function maybe_upgrade() {
+    $installed = get_option( 'azrcrv_cv_db_version', '0' );
+    if ( version_compare( $installed, '3.0.0', '<' ) ) {
+        create_ip_reputation_table();
+        update_option( 'azrcrv_cv_db_version', '3.0.0' );
+    }
 }

@@ -4,10 +4,7 @@
 
 # Description
 
-**Comment Validator** can be used to ensure comments pass certain rules before a comment can be submitted:
- * Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * A honey pot field can be enabled which, if set, will prevent comment submission.
- * A delay on the time taken between page load and comment submission can be enforced; the number of seconds is configurable.
+**Comment Validator** is a fully configurable plugin, which applies rules to mark comments as span or for moderation.
  
 This plugin is multisite compatible; each site can be set to use network settings or locally defined ones.
 
@@ -34,6 +31,31 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
  
+### [Version 3.0.0](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v3.0.0)
+ * Complete rewrite of comment validation engine
+ * Replaced binary pass/fail checks with a cumulative scoring system
+ * Added configurable scoring weights and thresholds via the settings page
+ * Added rate limiting with configurable submissions per minute
+ * Added secure server-side time token (replaces plain timestamp)
+ * Added JavaScript execution verification
+ * Added user interaction time tracking
+ * Added user agent check
+ * Added all-caps ratio detection
+ * Added repeated character sequence detection
+ * Added duplicate comment detection via content hashing
+ * Added disposable/spam email domain checking
+ * Added expanded spam keyword detection
+ * Added persistent IP reputation tracking via dedicated database table
+ * Added daily IP reputation decay via scheduled cron job
+ * Added spam score display in comment row actions on the comments list screen
+ * Added nonce verification on all comment form submissions
+ * Added sanitisation of all admin settings inputs
+ * Fixed admin settings page CSRF vulnerability
+ * Fixed time token being consumed on failed submissions, causing missing_token errors on back navigation
+ * Removed plain timestamp field in favour of secure server-side token
+ * Updated honeypot field to use inline CSS hiding to prevent CSS-based detection
+ * Added database table cleanup and cron unscheduling on plugin uninstall
+
 ### [Version 2.1.1](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v2.1.1)
  * Update plugin header for compatibility with ClasssicPress v2.
  

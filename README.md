@@ -3,10 +3,7 @@
 
 # Description
 
-**Comment Validator** can be used to ensure comments pass certain rules before a comment can be submitted:
- * Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * A honey pot field can be enabled which, if set, will prevent comment submission.
- * A delay on the time taken between page load and comment submission can be enforced; the number of seconds is configurable.
+**Comment Validator** is a fully configurable plugin, which applies rules to mark comments as span or for moderation.
  
 This plugin is multisite compatible; each site can be set to use network settings or locally defined ones.
 
