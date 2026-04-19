@@ -187,6 +187,13 @@ $azurecurve_plugins = array(
 		'retired'     => 0,
 		'updated'     => '2020-04-04',
 	),
+	'Lorem Ipsum Generator'  => array(
+		'plugin_link' => 'azrcrv-snippets/azrcrv-snippets.php',
+		'admin_URL'   => 'admin.php?page=azrcrv-lig',
+		'dev_URL'     => 'https://development.azurecurve.co.uk/classicpress-plugins/lorem-ipsum-generator/',
+		'retired'     => 0,
+		'updated'     => '2026-04-19',
+	),
 	'Maintenance Mode'           => array(
 		'plugin_link' => 'azrcrv-maintenance-mode/azrcrv-maintenance-mode.php',
 		'admin_URL'   => 'admin.php?page=azrcrv-mm',
@@ -314,6 +321,20 @@ $azurecurve_plugins = array(
 		'dev_URL'     => 'https://development.azurecurve.co.uk/classicpress-plugins/snippets/',
 		'retired'     => 0,
 		'updated'     => '2020-10-28',
+	),
+	'String Inspector'  => array(
+		'plugin_link' => 'azrcrv-snippets/azrcrv-snippets.php',
+		'admin_URL'   => 'admin.php?page=azrcrv-stri',
+		'dev_URL'     => 'https://development.azurecurve.co.uk/classicpress-plugins/string-inspector/',
+		'retired'     => 0,
+		'updated'     => '2026-04-19',
+	),
+	'Strong Password Generator'  => array(
+		'plugin_link' => 'azrcrv-snippets/azrcrv-snippets.php',
+		'admin_URL'   => 'admin.php?page=azrcrv-spg',
+		'dev_URL'     => 'https://development.azurecurve.co.uk/classicpress-plugins/strong-password-generator/',
+		'retired'     => 0,
+		'updated'     => '2026-04-19',
 	),
 	'Tag Cloud'                  => array(
 		'plugin_link' => 'azrcrv-tag-cloud/azrcrv-tag-cloud.php',

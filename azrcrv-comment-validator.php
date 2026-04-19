@@ -2,8 +2,8 @@
 /**
  * ------------------------------------------------------------------------------
  * Plugin Name:		Comment Validator
- * Description:		Checks comment to ensure they are longer than the minimum, shorter than the maximum and also allows comments to be forced into moderation based on length.
- * Version:			3.0.0
+ * Description:		Validates comments using a multi-layer scoring engine combining honeypot, timing, JavaScript, rate limiting, content analysis, and IP reputation checks.
+ * Version:			3.0.1
  * Requires CP:		1.0
  * Requires PHP:	7.4
  * Author: 			azurecurve

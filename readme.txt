@@ -4,7 +4,11 @@
 
 # Description
 
-**Comment Validator** is a fully configurable plugin, which applies rules to mark comments as span or for moderation.
+Comment Validator protects your site from spam by replacing simple pass/fail checks with a cumulative scoring engine. Each comment is assessed across multiple layers — honeypot detection, secure time tokens, JavaScript verification, user interaction tracking, rate limiting, IP reputation, and content analysis including link density, spam keywords, all-caps ratio, repeated characters, duplicate detection, and disposable email domains.
+
+Each check contributes a configurable weight to a total score. When the score reaches the moderation threshold the comment is held for review; when it reaches the spam threshold it is marked as spam and the submitting IP has its reputation score incremented, making future submissions from that address increasingly likely to be caught. IP reputation scores decay daily so legitimate users are not permanently penalised.
+
+All weights and thresholds are adjustable from the settings page without touching code. The spam score and triggered rules for each comment are displayed directly in the comments list, making moderation triage quick and transparent.
  
 This plugin is multisite compatible; each site can be set to use network settings or locally defined ones.
 
