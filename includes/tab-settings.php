@@ -45,7 +45,7 @@ if ( ! function_exists( 'is_multisite' ) && is_multisite() ) {
 	$tab_settings .= '
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Network Settings', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Network Settings', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -62,7 +62,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -76,7 +76,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Comment Length', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Comment Length', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -103,7 +103,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Honeypot', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Honeypot', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -124,7 +124,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Time Delay', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Time Delay', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -145,7 +145,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Rate Limiting', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Rate Limiting', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -158,7 +158,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Scoring Thresholds', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Scoring Thresholds', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>
@@ -178,7 +178,7 @@ $tab_settings .= '
 
 	<tr>
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
-			<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Scoring Weights', 'azrcrv-cv' ) . '</h2>
+			' . esc_html__( 'Scoring Weights', 'azrcrv-cv' ) . '
 		</th>
 	</tr>
 	<tr>

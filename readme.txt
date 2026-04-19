@@ -35,6 +35,12 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
  
+### [Version 3.0.2](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v3.0.2)
+ * Update settings tabs and css to format th elements correctly.
+ 
+### [Version 3.0.1](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v3.0.1)
+ * Update description and list of plugins.
+
 ### [Version 3.0.0](https://github.com/azurecurve/azrcrv-comment-validator/releases/tag/v3.0.0)
  * Complete rewrite of comment validation engine
  * Replaced binary pass/fail checks with a cumulative scoring system

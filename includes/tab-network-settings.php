@@ -34,7 +34,7 @@ $tab_network_settings .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '
 			
 		</th>
 
@@ -70,7 +70,7 @@ $tab_network_settings .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Comment Length Settings', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Comment Length Settings', 'azrcrv-cv' ) . '
 			
 		</th>
 

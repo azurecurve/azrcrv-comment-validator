@@ -19,7 +19,7 @@ $tab_instructions       = '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Protect Usernames', 'azrcrv-cv' ) . '
 			
 		</th>
 
@@ -34,7 +34,7 @@ if ( ! function_exists( 'is_multisite' ) && is_multisite() ) {
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Network Settings', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Network Settings', 'azrcrv-cv' ) . '
 			
 		</th>
 
@@ -73,7 +73,7 @@ $tab_instructions .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Comment Length', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Comment Length', 'azrcrv-cv' ) . '
 			
 		</th>
 
@@ -96,7 +96,7 @@ $tab_instructions .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Honeypot', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Honeypot', 'azrcrv-cv' ) . '
 			
 		</th>
 
@@ -124,7 +124,7 @@ $tab_instructions .= '
 	
 		<th scope="row" colspan=2 class="azrcrv-settings-section-heading">
 			
-				<h2 class="azrcrv-settings-section-heading">' . esc_html__( 'Time Delay', 'azrcrv-cv' ) . '</h2>
+				' . esc_html__( 'Time Delay', 'azrcrv-cv' ) . '
 			
 		</th>
 
